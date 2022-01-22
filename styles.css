@@ -1,0 +1,51 @@
+* {
+margin: 0;
+}
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+#main__container {
+    width: 80%;
+    height: 40%;
+}
+
+#selected__pile {
+    display: flex;
+    height: 100%;
+    border: solid 2px black;
+}
+
+#selected__pile > .edge {
+    width: 17%;
+    height: 100%;
+    border: solid 2px black;
+
+}
+
+#center {
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+    height: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    height: 14%;
+    width: 100%;
+    
+}
+
+#forth__row {
+    height: 16%;
+}
+
+.stick{
+    height: 99%;
+    width: 2%;
+    background-color: crimson;
+}
