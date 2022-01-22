@@ -19,12 +19,12 @@ User will need to select a stick one at a time.
 All the sticks will be buttons until user finishes selecting the amount that he needs.
 Sticks will then cease to be buttons.
 It will be cpu's turn to select sticks.
--cpu will be coded to choose with this formula c = 4 - userChoice;
--use a loop that will select any stick (document.querySelector())
--include an animation once all sticks were selected to travel across to the CPU side
+- cpu will be coded to choose with this formula c = 4 - userChoice;
+- use a loop that will select any stick (document.querySelector())
+- include an animation once all sticks were selected to travel across to the CPU side
 
 Once last move is made
--message that declares winner
+- message that declares winner
 
 ## html file & css
 -the included html & css were for wireframing purposes only
@@ -35,7 +35,7 @@ Once last move is made
 : how many sticks they have taken
 : how many sticks they took last turn
 
--counter in the center to show total number of sticks left in the pile
+- counter in the center to show total number of sticks left in the pile
 
 ## other concerns/comments/ideas/wonderings
 
