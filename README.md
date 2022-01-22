@@ -5,7 +5,7 @@ Nim is a game in which two players take turns picking sticks.
 In this version, each turn players are must take one, two or three sticks from the pile.
 Last player to choose from the pile loses.
 
-## How the game supposed to work
+## How the game should work
 
 Player will be prompted to select the number of sticks that will be removed in that round by using a button.
 
