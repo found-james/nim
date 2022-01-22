@@ -12,9 +12,9 @@ Player will be prompted to select the number of sticks that will be removed in t
 As soon as the click happens, all the sticks will "turn into" buttons.
 
 User will need to select a stick one at a time.
--something needs to keep track of how many sticks have been selected
--once the number of selected sticks matches the value represented 
--include an animation once all sticks were selected to travel across to the users side
+- something needs to keep track of how many sticks have been selected
+- once the number of selected sticks matches the value represented 
+- include an animation once all sticks were selected to travel across to the users side
 
 All the sticks will be buttons until user finishes selecting the amount that he needs.
 Sticks will then cease to be buttons.
