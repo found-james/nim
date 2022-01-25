@@ -5,7 +5,7 @@ Nim is a game in which two players take turns picking sticks.
 In this version, each turn players are must take one, two or three sticks from the pile.
 Last player to choose from the pile loses.
 
-## How the game should work
+## How the game works
 
 Player will be prompted to select the number of sticks that will be removed in that round by using a button.
 
@@ -26,9 +26,10 @@ It will be cpu's turn to select sticks.
 Once last move is made
 - message that declares winner
 
-## html file & css
--the included html & css were for wireframing purposes only
--goal is to create most of the dom elements with js and append them. This should make it easier to modify the starting size of the pile should I want to extend the number of rounds played.
+## Technologies used
+- HTML, CSS & JS
+- the included html & css were for wireframing purposes only
+- goal is to create most of the dom elements with js and append them. This should make it easier to modify the starting size of the pile should I want to extend the number of rounds played.
 
 ## addtional elements that need to be added
 - counter on each of the players side so that players know 
@@ -41,3 +42,4 @@ Once last move is made
 
 click stick "disable" the other sticks
 CPU can continue with their logic
+use the buttons to generate a randomly selected stick from the pile
