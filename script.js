@@ -58,31 +58,59 @@
 
 //list of ids for rows 
 const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"];
+//const center = document.querySelector("#center");
 
+ 
 
-for (let i = 0; i < idsForRows.length; i++){ 
+// const createRows = () => {
+//     const row = document.createElement("div");
+//     row.classList.add("row");
+//     row.id = idsForRows[i];
+//     center.appendChild(row);
+// }
 
-const createRows = () => {
-    const row = document.createElement("div");
-    row.classList.add("row");
-    row.id = "first__row";
-    const center = document.querySelector("#center");
-    center.appendChild(row);
+class RowContainer {
+    constructor(id){
+        this.id = id;
+
+    }
+
+    
+
+//This code makes an array of future divs with their corresponding ids
+//I want this instance to become a div and I want to append it to <main>
+//Concerned that if I use a loop to create instances all instances will have the same variable name
+//I have everything in the array so I could the array index to refer to specific instances
+
+    static makeRowContainers (arr) {
+        const arrOfRows =[];
+        for (let i = 0; i < arr.length; i++){
+
+            arrOfRows.push(new RowContainer(arr[i]));
+
+    }
+    return arrOfRows;
+    }
+
 }
 
 
-createRows ();
-
-const createSticks = () => {
-    const stick = document.createElement("span");
-    stick.classList.add("stick");
-    const firstRow = document.querySelector("#first__row");
-    firstRow.appendChild(stick);
+const arrOfRows = RowContainer.makeRowContainers(idsForRows);
+console.log(arrOfRows);
 
 
-}
+// createRows ();
 
-createSticks();
+// const createSticks = () => {
+//     const stick = document.createElement("span");
+//     stick.classList.add("stick");
+//     const firstRow = document.querySelector("#first__row");
+//     firstRow.appendChild(stick);
+
+
+// }
+
+// createSticks();
 
 
 
