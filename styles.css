@@ -1,23 +1,24 @@
 * {
 margin: 0;
 }
-body {
+/* body {
     height: 100vh;
     width: 100%;
-}
+} */
 
-#main__container {
+main {
     width: 80%;
     height: 40%;
+    border: solid 2px black;
 }
 
-#selected__pile {
+#selected-pile {
     display: flex;
     height: 100%;
     border: solid 2px black;
 }
 
-#selected__pile > .edge {
+main > .edge {
     width: 17%;
     height: 100%;
     border: solid 2px black;
@@ -29,6 +30,7 @@ body {
     flex-direction: column;
     width: 66%;
     height: 100%;
+    border: solid black 2px;
 }
 
 .row {
@@ -37,6 +39,7 @@ body {
     gap: 5%;
     height: 14%;
     width: 100%;
+    border: solid 2px black;
     
 }
 
@@ -53,13 +56,14 @@ body {
 }
 
 
-#player__buttons {
+#player-buttons {
     display: flex;
-    height: 40%;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 80%;
     border: solid 2px black;
-    justify-content: space-between;
-
+    
 }
 
 
