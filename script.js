@@ -56,15 +56,31 @@
 // //next move has to be the bots
 
 //create layout of game
+
+
+const hmtlTag = document.querySelector("html");
+hmtlTag.style.margin = "0%";
+
 const bodyOfHtml = document.querySelector("body");
+hmtlTag.appendChild(bodyOfHtml);
 bodyOfHtml.style.height = "100vh";
 bodyOfHtml.style.width = "100%";
 
+const headerContainer = document.createElement("header");
+bodyOfHtml.appendChild(headerContainer);
+headerContainer.style.display = "flex";
+headerContainer.style.height = "20%";
+
+const navContainer = document.createElement("nav");
+headerContainer.appendChild(navContainer);
+navContainer.style.height = "100%";
+
+
 const mainConatiner = document.createElement("main");
-mainConatiner.style.width = "80%";
+bodyOfHtml.appendChild(mainConatiner);
+// mainConatiner.style.width = "100";
 mainConatiner.style.height = "40%";
 mainConatiner.style.display = "flex";
-bodyOfHtml.appendChild(mainConatiner);
 
 const leftSideMain = document.createElement("article");
 leftSideMain.id = "left-side";
@@ -80,27 +96,34 @@ rightSideMain.id = "right-side";
 rightSideMain.classList.add("edge");
 mainConatiner.appendChild(rightSideMain);
 
-const buttonsForUser = document.createElement("div");
-buttonsForUser.id = "player-buttons"
+const buttonsForUser = document.createElement("section");
 bodyOfHtml.appendChild(buttonsForUser);
+buttonsForUser.id = "player-buttons";
+// buttonsForUser.style.width = "100%";
+buttonsForUser.style.height = "20%";
 
 const buttonOne = document.createElement("button");
 buttonOne.id = "one";
-buttonOne.style.width = "25%";
+buttonOne.style.width = "15%";
 buttonOne.style.height = "15%";
 buttonsForUser.appendChild(buttonOne);
 
 const buttonTwo = document.createElement("button");
-buttonTwo.style.width = "25%";
+buttonTwo.style.width = "15%";
 buttonTwo.style.height = "15%";
 buttonTwo.id = "two";
 buttonsForUser.appendChild(buttonTwo);
 
 const buttonThree = document.createElement("button");
-buttonThree.style.width = "25%";
+buttonThree.style.width = "15%";
 buttonThree.style.height = "15%";
 buttonThree.id = "three";
 buttonsForUser.appendChild(buttonThree);
+
+const footerContainer = document.createElement("footer");
+bodyOfHtml.appendChild(footerContainer);
+footerContainer.style.height = "20%";
+
 
 const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"]; 
 const rowContainers =[]; 
@@ -108,7 +131,7 @@ const rowContainers =[];
 const createRows = (arr) => {
 
     for (let id of idsForRows){
-        const row = document.createElement("div");
+        const row = document.createElement("section");
         row.classList.add("row");
         row.id = id;
         centerMain.appendChild(row);
