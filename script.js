@@ -1,4 +1,3 @@
-// const totalSticks = 17;
 
 // const playerChoiceOneStick = document.querySelector("#one");
 // const playerChoiceTwoSticks = document.querySelector("two");
@@ -56,7 +55,7 @@
 // }
 // //next move has to be the bots
 
-
+//create layout of game
 const bodyOfHtml = document.querySelector("body");
 bodyOfHtml.style.height = "100vh";
 bodyOfHtml.style.width = "100%";
@@ -71,7 +70,6 @@ const leftSideMain = document.createElement("article");
 leftSideMain.id = "left-side";
 leftSideMain.classList.add("edge");
 mainConatiner.appendChild(leftSideMain);
-
 
 const centerMain = document.createElement("article");
 centerMain.id = "center";
@@ -105,7 +103,8 @@ buttonThree.id = "three";
 buttonsForUser.appendChild(buttonThree);
 
 const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"]; 
- 
+const rowContainers =[]; 
+
 const createRows = (arr) => {
 
     for (let id of idsForRows){
@@ -113,74 +112,46 @@ const createRows = (arr) => {
         row.classList.add("row");
         row.id = id;
         centerMain.appendChild(row);
+        rowContainers.push(row);
+
     }
-
-
-
-    // for (let i = 0; i < arr.length; i++){
-    //     const row = document.createElement("div");
-    //     row.classList.add("row");
-    //     row.id = idsForRows[i];
-    //     center.appendChild(row);
-    // }
 }
 
-createRows(idsForRows);
+createRows(idsForRows); console.log(rowContainers);
 
+const stickArr = [];
 const createSticks = (num) => {
     
     for (let i = 0; i < num; i++){
     const stick = document.createElement("span");
     stick.classList.add("stick");
+    stickArr.push(stick);
     }
-
-    
 }
 
-console.log(createSticks(17));
+createSticks(17);
 
-// const createSticks = () => {
-//     const stick = document.createElement("span");
-//     stick.classList.add("stick");
-//     const firstRow = document.querySelector("#first__row");
-//     firstRow.appendChild(stick);
-
-
-// }
-
-// createSticks();
-
-
-
-// class Sticks {
-//     constructor(){
-   
-//     }
-// }
-
-// class RowsForSticks {
-//     constructor(){
+const appendSticks = () => {
+    const copyOfSticks = stickArr;
     
-//     }
+    for(let container of rowContainers){
+        const populateSticks = (numOfSticks) => {
+            if (copyOfSticks.length === 0){
+                throw new Error ("arr is empty")
+            } else {
+                for (let i = 0; i < numOfSticks; i++){
+                    container.appendChild(copyOfSticks.pop());
+                }
+            }
+        }
+        
+        if (container.id === "first-row" || container.id === "seventh-row") populateSticks(1);
+        if (container.id === "second-row" || container.id === "sixth-row") populateSticks(2);
+        if (container.id === "third-row" || container.id === "fifth-row") populateSticks(3);
+        if (container.id === "forth-row") populateSticks(5);
 
-// }
+    }
+}
 
-
-// class RowContainer {
-//     constructor(id){
-//         this.id = id;
-
-//     }
-// //This code makes an array of future divs with their corresponding ids
-// //I want this instance to become a div and I want to append it to <main>
-// //Concerned that if I use a loop to create instances all instances will have the same variable name
-// //I have everything in the array so I could the array index to refer to specific instances
-
-//     static makeRowContainers (arr) {
-//         const arrOfRows =[];
-//         for (let i = 0; i < arr.length; i++){
-//             arrOfRows.push(new RowContainer(arr[i]));
-//     }
-//     return arrOfRows;
-//     }
-// }
+appendSticks();
+console.log(rowContainers[3]);
