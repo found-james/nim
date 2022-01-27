@@ -5,10 +5,15 @@ margin: 0;
     height: 100vh;
     width: 100%;
 } */
-
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Montserrat&family=Roboto+Mono&family=Ubuntu:wght@300;400&display=swap');
 
 body, section {
+    margin: 0;
     border: solid 2px black;
+    font-family: 'Fruktur', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 h2 {
@@ -66,6 +71,13 @@ main > .edge {
     align-items: center;
     /* border: solid 2px black; */
     
+}
+
+.stats {
+    
+    height: 85%;
+    width: 100%;
+    background-color: cornflowerblue;
 }
 
 footer {

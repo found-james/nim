@@ -60,6 +60,7 @@
 
 
 
+
 const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"]; 
 const rowContainers =[]; 
 

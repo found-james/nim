@@ -1,4 +1,4 @@
-// Modules for html elements 
+// Modules for html elements later
 const hmtlTag = document.querySelector("html");
 hmtlTag.style.margin = "0%";
 
@@ -6,6 +6,7 @@ const bodyOfHtml = document.querySelector("body");
 hmtlTag.appendChild(bodyOfHtml);
 bodyOfHtml.style.height = "100vh";
 bodyOfHtml.style.width = "100%";
+
 
 const headerContainer = document.createElement("header");
 bodyOfHtml.appendChild(headerContainer);
@@ -45,6 +46,20 @@ leftSideMain.appendChild (sectionForStats);
 sectionForStats.style.height = "85%";
 sectionForStats.style.width = "100%";
 
+const modalForStats = document.createElement("div");
+sectionForStats.appendChild(modalForStats);
+
+const buttonForStats = document.createElement("button");
+sectionForStats.appendChild(buttonForStats);
+buttonForStats.setAttribute("data-clickcount", "0");
+buttonForStats.style.width = "100%";
+buttonForStats.style.height = "15%";
+buttonForStats.textContent = "player stats";
+buttonForStats.addEventListener("click", statsModal);
+
+function statsModal(e) {
+    modalForStats.classList.toggle("stats");
+}
 
 
 const centerMain = document.createElement("article");
@@ -52,9 +67,29 @@ centerMain.id = "center";
 mainConatiner.appendChild(centerMain);
 
 const rightSideMain = document.createElement("article");
+mainConatiner.appendChild(rightSideMain);
 rightSideMain.id = "right-side";
 rightSideMain.classList.add("edge");
-mainConatiner.appendChild(rightSideMain);
+rightSideMain.style.display = "flex";
+rightSideMain.style.flexDirection = "column";
+
+const headerForArticle = document.createElement("header");
+rightSideMain.appendChild(headerForArticle);
+headerForArticle.style.height = "15%";
+
+const h2ForArticle = document.createElement("h2");
+headerForArticle.appendChild (h2ForArticle);
+h2ForArticle.textContent = "Bot stats";
+
+const sectionForBotStats = document.createElement("section");
+rightSideMain.appendChild (sectionForBotStats);
+sectionForBotStats.style.height = "85%";
+sectionForBotStats.style.width = "100%";
+
+const buttonForBotStats = document.createElement("button");
+sectionForBotStats.appendChild(buttonForBotStats);
+buttonForBotStats.style.width = "100%";
+buttonForBotStats.style.height = "15%";
 
 const buttonsForUser = document.createElement("section");
 bodyOfHtml.appendChild(buttonsForUser);
