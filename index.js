@@ -51,14 +51,19 @@ sectionForStats.appendChild(modalForStats);
 
 const buttonForStats = document.createElement("button");
 sectionForStats.appendChild(buttonForStats);
-buttonForStats.setAttribute("data-clickcount", "0");
+buttonForStats.setAttribute("id", "player-stats-button");
 buttonForStats.style.width = "100%";
 buttonForStats.style.height = "15%";
 buttonForStats.textContent = "player stats";
 buttonForStats.addEventListener("click", statsModal);
 
 function statsModal(e) {
-    modalForStats.classList.toggle("stats");
+    switch (e.target.id){
+        case "player-stats-button" : modalForStats.classList.toggle("stats");
+            break;
+        case "bot-stats-button" : modalForBotStats.classList.toggle("stats");
+            break;
+}
 }
 
 
@@ -86,10 +91,16 @@ rightSideMain.appendChild (sectionForBotStats);
 sectionForBotStats.style.height = "85%";
 sectionForBotStats.style.width = "100%";
 
+const modalForBotStats = document.createElement("div");
+sectionForBotStats.appendChild(modalForBotStats);
+
 const buttonForBotStats = document.createElement("button");
 sectionForBotStats.appendChild(buttonForBotStats);
+buttonForBotStats.setAttribute("id", "bot-stats-button");
 buttonForBotStats.style.width = "100%";
 buttonForBotStats.style.height = "15%";
+buttonForBotStats.textContent = "bot stats";
+buttonForBotStats.addEventListener("click", statsModal);
 
 const buttonsForUser = document.createElement("section");
 bodyOfHtml.appendChild(buttonsForUser);
