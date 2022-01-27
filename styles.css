@@ -7,8 +7,13 @@ margin: 0;
 } */
 
 
-body {
+body, section {
     border: solid 2px black;
+}
+
+h2 {
+
+    box-sizing: border-box;
 }
 
 #selected-pile {
