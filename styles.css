@@ -6,13 +6,11 @@ margin: 0;
     width: 100%;
 } */
 
-main {
+
+body {
     border: solid 2px black;
 }
 
-nav {
-    border: solid 2px black;
-}
 #selected-pile {
     display: flex;
     height: 100%;
@@ -61,7 +59,7 @@ main > .edge {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 2px black;
+    /* border: solid 2px black; */
     
 }
 

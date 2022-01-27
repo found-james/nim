@@ -9,19 +9,16 @@ Last player to choose from the pile loses.
 
 Player will be prompted to select the number of sticks that will be removed in that round by using a button.
 
-As soon as the click happens, all the sticks will "turn into" buttons.
-
 User will need to select a stick one at a time.
 - something needs to keep track of how many sticks have been selected
 - once the number of selected sticks matches the value represented 
 - include an animation once all sticks were selected to travel across to the users side
 
 All the sticks will be buttons until user finishes selecting the amount that he needs.
-Sticks will then cease to be buttons.
 It will be cpu's turn to select sticks.
 - cpu will be coded to choose with this formula c = 4 - userChoice;
 - use a loop that will select any stick (document.querySelector())
-- include an animation once all sticks were selected to travel across to the CPU side
+#- include an animation once all sticks were selected to travel across to the CPU side
 
 Once last move is made
 - message that declares winner

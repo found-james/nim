@@ -69,11 +69,12 @@ bodyOfHtml.style.width = "100%";
 const headerContainer = document.createElement("header");
 bodyOfHtml.appendChild(headerContainer);
 headerContainer.style.display = "flex";
+headerContainer.style.postion = "sticky";
 headerContainer.style.height = "20%";
 
 const navContainer = document.createElement("nav");
 headerContainer.appendChild(navContainer);
-navContainer.style.height = "100%";
+// navContainer.style.height = "100%";
 
 
 const mainConatiner = document.createElement("main");
@@ -82,7 +83,7 @@ bodyOfHtml.appendChild(mainConatiner);
 mainConatiner.style.height = "40%";
 mainConatiner.style.display = "flex";
 
-const leftSideMain = document.createElement("article");
+const leftSideMain = document.createElement("aside");
 leftSideMain.id = "left-side";
 leftSideMain.classList.add("edge");
 mainConatiner.appendChild(leftSideMain);
@@ -140,7 +141,7 @@ const createRows = (arr) => {
     }
 }
 
-createRows(idsForRows); console.log(rowContainers);
+createRows(idsForRows);
 
 const stickArr = [];
 const createSticks = (num) => {
@@ -158,6 +159,7 @@ const appendSticks = () => {
     const copyOfSticks = stickArr;
     
     for(let container of rowContainers){
+        
         const populateSticks = (numOfSticks) => {
             if (copyOfSticks.length === 0){
                 throw new Error ("arr is empty")
@@ -167,12 +169,23 @@ const appendSticks = () => {
                 }
             }
         }
-        
-        if (container.id === "first-row" || container.id === "seventh-row") populateSticks(1);
-        if (container.id === "second-row" || container.id === "sixth-row") populateSticks(2);
-        if (container.id === "third-row" || container.id === "fifth-row") populateSticks(3);
-        if (container.id === "forth-row") populateSticks(5);
-
+        switch (container.id){
+            case "first-row":
+            case "seventh-row": 
+                populateSticks(1);
+                break;
+            case "second-row": 
+            case "sixth-row": 
+                populateSticks(2);
+                break;
+            case "third-row": 
+            case "fifth-row": 
+                populateSticks(3);
+                break;
+            case "forth-row": 
+                populateSticks(5);
+                break;
+        }
     }
 }
 
