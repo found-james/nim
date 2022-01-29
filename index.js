@@ -3,7 +3,6 @@ const hmtlTag = document.querySelector("html");
 hmtlTag.style.margin = "0%";
 
 const bodyOfHtml = document.querySelector("body");
-hmtlTag.appendChild(bodyOfHtml);
 bodyOfHtml.style.height = "100vh";
 bodyOfHtml.style.width = "100%";
 
@@ -63,7 +62,7 @@ function statsModal(e) {
             break;
         case "bot-stats-button" : modalForBotStats.classList.toggle("stats");
             break;
-}
+    }
 }
 
 

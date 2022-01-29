@@ -12,7 +12,6 @@ last player to choose from the pile loses
 - HTML, CSS & JS
 
 ## addtional elements that need to be added
-- you let me know
+
 
 ## other concerns/comments/ideas/wonderings
-- you know, let me know
