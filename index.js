@@ -58,22 +58,31 @@ buttonForStats.addEventListener("click", statsModal);
 
 function statsModal(e) {
     console.log(e);
+
+    
     switch (e.target.id){
         case "player-stats-button" : modalForStats.classList.toggle("stats");
             break;
         case "bot-stats-button" : modalForBotStats.classList.toggle("stats");
             break;
-
     }
 }
-
+ 
 
 const centerMain = document.createElement("article");
-centerMain.id = "center";
+centerMain.setAttribute("id", "center");
 mainConatiner.appendChild(centerMain);
 
 const headerForCenter = document.createElement("header");
 centerMain.appendChild(headerForCenter);
+centerMain.style.height = "28%";
+centerMain.style.backgroundColor = "goldenrod";
+
+const updateParagraph = document.createElement("p");
+headerForCenter.appendChild(updateParagraph);
+
+const confirmButtonCenter = document.createElement("button");
+headerForCenter.appendChild(confirmButtonCenter);
 
 const rightSideMain = document.createElement("article");
 mainConatiner.appendChild(rightSideMain);
@@ -117,18 +126,29 @@ buttonOne.setAttribute("id", "one");
 buttonOne.style.width = "15%";
 buttonOne.style.height = "15%";
 buttonsForUser.appendChild(buttonOne);
+const updateHeaderOfMain = (e) => editText(e.target.id);
+buttonOne.addEventListener("click", updateHeaderOfMain);
+
+function editText(str) {
+    console.log(str);
+    updateParagraph.textContent = `testing ${str}`
+    confirmButtonCenter.classList.toggle("reveal-confirm");
+}
 
 const buttonTwo = document.createElement("button");
 buttonTwo.style.width = "15%";
 buttonTwo.style.height = "15%";
 buttonTwo.setAttribute("id", "two");
 buttonsForUser.appendChild(buttonTwo);
+buttonTwo.addEventListener("click", updateHeaderOfMain);
+
 
 const buttonThree = document.createElement("button");
 buttonThree.style.width = "15%";
 buttonThree.style.height = "15%";
 buttonThree.setAttribute("id", "three");
 buttonsForUser.appendChild(buttonThree);
+buttonThree.addEventListener("click", updateHeaderOfMain);
 
 const footerContainer = document.createElement("footer");
 bodyOfHtml.appendChild(footerContainer);
