@@ -42,6 +42,12 @@ main > .edge {
     border: solid black 2px;
 }
 
+
+.center-updates {
+    height: 27%;
+    background-color: goldenrod;
+}
+
 .row {
     display: flex;
     justify-content: center;

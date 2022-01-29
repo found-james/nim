@@ -76,7 +76,7 @@ const createRows = (arr) => {
     }
 }
 
-createRows(idsForRows);
+//createRows(idsForRows);
 
 const stickArr = [];
 const createSticks = (num) => {
@@ -88,7 +88,7 @@ const createSticks = (num) => {
     }
 }
 
-createSticks(17);
+//createSticks(17);
 
 const appendSticks = () => {
     const copyOfSticks = stickArr;

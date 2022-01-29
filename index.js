@@ -24,24 +24,24 @@ bodyOfHtml.appendChild(mainConatiner);
 mainConatiner.style.height = "40%";
 mainConatiner.style.display = "flex";
 
-const leftSideMain = document.createElement("aside");
+const leftSideMain = document.createElement("article");
 mainConatiner.appendChild(leftSideMain);
-leftSideMain.id = "left-side";
+leftSideMain.setAttribute("id", "left-side");
 leftSideMain.classList.add("edge");
 leftSideMain.style.display = "flex";
 leftSideMain.style.flexDirection = "column";
 
 
-const headerForAside = document.createElement("header");
-leftSideMain.appendChild(headerForAside);
-headerForAside.style.height = "15%";
+const headerForLeftSide = document.createElement("header");
+leftSideMain.appendChild(headerForLeftSide);
+headerForLeftSide.style.height = "15%";
 
-const h2ForAside = document.createElement("h2");
-headerForAside.appendChild (h2ForAside);
-h2ForAside.textContent = "Player stats";
+const h2ForLeftSide = document.createElement("h2");
+headerForLeftSide.appendChild(h2ForLeftSide);
+h2ForLeftSide.textContent = "Player stats";
 
 const sectionForStats = document.createElement("section");
-leftSideMain.appendChild (sectionForStats);
+leftSideMain.appendChild(sectionForStats);
 sectionForStats.style.height = "85%";
 sectionForStats.style.width = "100%";
 
@@ -57,11 +57,13 @@ buttonForStats.textContent = "player stats";
 buttonForStats.addEventListener("click", statsModal);
 
 function statsModal(e) {
+    console.log(e);
     switch (e.target.id){
         case "player-stats-button" : modalForStats.classList.toggle("stats");
             break;
         case "bot-stats-button" : modalForBotStats.classList.toggle("stats");
             break;
+
     }
 }
 
@@ -70,20 +72,23 @@ const centerMain = document.createElement("article");
 centerMain.id = "center";
 mainConatiner.appendChild(centerMain);
 
+const headerForCenter = document.createElement("header");
+centerMain.appendChild(headerForCenter);
+
 const rightSideMain = document.createElement("article");
 mainConatiner.appendChild(rightSideMain);
-rightSideMain.id = "right-side";
+rightSideMain.setAttribute("id", "right-side");
 rightSideMain.classList.add("edge");
 rightSideMain.style.display = "flex";
 rightSideMain.style.flexDirection = "column";
 
-const headerForArticle = document.createElement("header");
-rightSideMain.appendChild(headerForArticle);
-headerForArticle.style.height = "15%";
+const headerForRightSide = document.createElement("header");
+rightSideMain.appendChild(headerForRightSide);
+headerForRightSide.style.height = "15%";
 
-const h2ForArticle = document.createElement("h2");
-headerForArticle.appendChild (h2ForArticle);
-h2ForArticle.textContent = "Bot stats";
+const h2ForRightSide = document.createElement("h2");
+headerForRightSide.appendChild(h2ForRightSide);
+h2ForRightSide.textContent = "Bot stats";
 
 const sectionForBotStats = document.createElement("section");
 rightSideMain.appendChild (sectionForBotStats);
@@ -103,12 +108,12 @@ buttonForBotStats.addEventListener("click", statsModal);
 
 const buttonsForUser = document.createElement("section");
 bodyOfHtml.appendChild(buttonsForUser);
-buttonsForUser.id = "player-buttons";
+buttonsForUser.setAttribute("id", "player-buttons");
 // buttonsForUser.style.width = "100%";
 buttonsForUser.style.height = "20%";
 
 const buttonOne = document.createElement("button");
-buttonOne.id = "one";
+buttonOne.setAttribute("id", "one");
 buttonOne.style.width = "15%";
 buttonOne.style.height = "15%";
 buttonsForUser.appendChild(buttonOne);
@@ -116,13 +121,13 @@ buttonsForUser.appendChild(buttonOne);
 const buttonTwo = document.createElement("button");
 buttonTwo.style.width = "15%";
 buttonTwo.style.height = "15%";
-buttonTwo.id = "two";
+buttonTwo.setAttribute("id", "two");
 buttonsForUser.appendChild(buttonTwo);
 
 const buttonThree = document.createElement("button");
 buttonThree.style.width = "15%";
 buttonThree.style.height = "15%";
-buttonThree.id = "three";
+buttonThree.setAttribute("id", "three");
 buttonsForUser.appendChild(buttonThree);
 
 const footerContainer = document.createElement("footer");
