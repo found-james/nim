@@ -73,17 +73,37 @@ const centerMain = document.createElement("article");
 centerMain.setAttribute("id", "center");
 mainConatiner.appendChild(centerMain);
 
+
+const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"]; 
+const rowContainers =[]; 
+
+const createRows = (arr) => {
+
+    for (let id of idsForRows){
+        const row = document.createElement("section");
+        centerMain.appendChild(row);
+        row.classList.add("row");
+        row.id = id;
+        rowContainers.push(row);
+
+    }
+}
+
+
 const headerForCenter = document.createElement("header");
 centerMain.appendChild(headerForCenter);
-centerMain.style.height = "28%";
-centerMain.style.backgroundColor = "goldenrod";
+headerForCenter.style.height = "28%";
+headerForCenter.style.backgroundColor = "goldenrod";
 
 const updateParagraph = document.createElement("p");
 headerForCenter.appendChild(updateParagraph);
 
 const confirmButtonCenter = document.createElement("button");
 headerForCenter.appendChild(confirmButtonCenter);
+//confirmButtonCenter.addEventListener("click", botMoves)
 
+//botMoves is a function that needs input from the button selected from 
+//user. so if user selects one bot
 const rightSideMain = document.createElement("article");
 mainConatiner.appendChild(rightSideMain);
 rightSideMain.setAttribute("id", "right-side");
@@ -129,10 +149,28 @@ buttonsForUser.appendChild(buttonOne);
 const updateHeaderOfMain = (e) => editText(e.target.id);
 buttonOne.addEventListener("click", updateHeaderOfMain);
 
+var playerSelectsOne; 
+var playerSelectsTwo;
+var playerSelectsThree;
+
 function editText(str) {
     console.log(str);
     updateParagraph.textContent = `testing ${str}`
     confirmButtonCenter.classList.toggle("reveal-confirm");
+
+    switch (str){
+        case "one" :
+            playerSelectsOne = true;
+            break;
+        case "two" :
+            playerSelectsTwo = true;
+            break;
+        case "three" :
+            playerSelectsThree = true;
+            break;
+    } // this function is supposed to store the choice when the header is updated
+    // botMove function will retrieve this global variable and decide how many sticks to move
+    console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
 }
 
 const buttonTwo = document.createElement("button");
@@ -141,7 +179,6 @@ buttonTwo.style.height = "15%";
 buttonTwo.setAttribute("id", "two");
 buttonsForUser.appendChild(buttonTwo);
 buttonTwo.addEventListener("click", updateHeaderOfMain);
-
 
 const buttonThree = document.createElement("button");
 buttonThree.style.width = "15%";

@@ -57,26 +57,17 @@
 
 //create layout of game
 
+    // // const targetButtons = [buttonOne, buttonTwo, buttonThree];
+    // // for (let button of targetButtons){
+    // //     if (button.id !== str) button.classList.toggle("disapper-player-button");
+    // //     console.log("loop is working", button);
+    // }
 
 
 
 
-const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"]; 
-const rowContainers =[]; 
 
-const createRows = (arr) => {
-
-    for (let id of idsForRows){
-        const row = document.createElement("section");
-        row.classList.add("row");
-        row.id = id;
-        centerMain.appendChild(row);
-        rowContainers.push(row);
-
-    }
-}
-
-//createRows(idsForRows);
+createRows(idsForRows);
 
 const stickArr = [];
 const createSticks = (num) => {
@@ -88,7 +79,7 @@ const createSticks = (num) => {
     }
 }
 
-//createSticks(17);
+createSticks(17);
 
 const appendSticks = () => {
     const copyOfSticks = stickArr;

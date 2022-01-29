@@ -92,6 +92,11 @@ main > .edge {
     
 }
 
+.disappear-player-buttons {
+    height: 0px;
+    width: 0px;
+}
+
 .stats {
     
     height: 85%;
