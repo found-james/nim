@@ -65,14 +65,14 @@ mainConatiner.appendChild(centerMain);
 const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"]; 
 const rowContainers =[]; 
 
-const createRows = (arr) => {
+const createRows = (arr, domElem, arrOfdomElems) => {
 
-    for (let id of idsForRows){
+    for (let str of arr){
         const row = document.createElement("section");
-        centerMain.appendChild(row);
+        domElem.appendChild(row);
         row.classList.add("row");
-        row.id = id;
-        rowContainers.push(row);
+        row.setAttribute("id", str);
+        arrOfdomElems.push(row);
 
     }
 }
@@ -95,7 +95,7 @@ headerForCenter.append(secForCenterButtons);
 secForCenterButtons.style.display = "flex";
 secForCenterButtons.style.justifyContent = "center";
 secForCenterButtons.style.height = "30%";
-secForCenterButtons.style.backgroundColor = "cornflowerblue";
+
 
 const confirmButtonCenter = document.createElement("button");
 confirmButtonCenter.textContent = "confirm";
@@ -107,8 +107,9 @@ const cancelButtonCenter = document.createElement("button");
 cancelButtonCenter.textContent = "cancel";
 cancelButtonCenter.classList.add("bot-moves-buttons");
 cancelButtonCenter.setAttribute("hidden", "true");
+cancelButtonCenter.addEventListener("click", statsModal);
 secForCenterButtons.append(confirmButtonCenter, cancelButtonCenter);
-//confirmButtonCenter.addEventListener("click", botMoves)
+
 
 //botMoves is a function that needs input from the button selected from 
 //user. so if user selects one bot
@@ -178,6 +179,7 @@ const clearRoundResults = document.createElement("button");
 clearRoundResults.setAttribute("hidden", true);
 clearRoundResults.style.width = "33%";
 clearRoundResults.style.height = "100%";
+clearRoundResults.textContent = "...click to allow botMove";
 containerForButtons.append(buttonOne, buttonTwo, buttonThree, clearRoundResults);
 clearRoundResults.addEventListener("click", statsModal);
 
@@ -192,10 +194,24 @@ var playerSelectsThree;
 const paragraphs = [updateParagraph, updateParagraphWithBotChoice];
 const playerButtons = [buttonOne, buttonTwo, buttonThree];
 const botMovesButtons = [confirmButtonCenter, cancelButtonCenter];
-const playerSelections = [playerSelectsOne, playerSelectsTwo, playerSelectsThree];
+
+
 
 function statsModal(e) {
     console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
+
+    function botMove(){
+        if (playerSelectsOne) console.log("bot will move 3 sticks from pile");
+        if (playerSelectsTwo) console.log("bot will move 2 sticks");
+        if (playerSelectsThree) console.log("bot will move 1 stick");
+    }
+
+    function updateBotPara() { 
+        if(playerSelectsOne) updateParagraphWithBotChoice.textContent = "Bot will move 3 sticks";
+        if(playerSelectsTwo) updateParagraphWithBotChoice.textContent = "Bot will move 2 sticks";
+        if(playerSelectsThree) updateParagraphWithBotChoice.textContent = "Bot will move 1 stick";
+
+        } 
     switch (e.target){
         case buttonForStats: 
             modalForStats.classList.toggle("stats");
@@ -207,20 +223,26 @@ function statsModal(e) {
             // if (playerSelectsOne) bot will choose 3
             // if (playerSelectsTwo) bot will choose 2
             // if (playerSelectsThree) bot will choose 1
-            updateParagraphWithBotChoice.textContent = "test text";
             clearRoundResults.removeAttribute("hidden");
+            updateBotPara();
+            for(let button of botMovesButtons) button.setAttribute("hidden", true);
+            break;
+            case cancelButtonCenter:
+                playerSelectsOne = false;
+                playerSelectsTwo = false;
+                playerSelectsThree = false;
+                for(let paragraph of paragraphs) paragraph.textContent = "";
+                for(let button of botMovesButtons) button.setAttribute("hidden", true);
+                for(let button of playerButtons) button.removeAttribute("hidden");        
+            case clearRoundResults:
+            botMove();
             playerSelectsOne = false;
             playerSelectsTwo = false;
             playerSelectsThree = false;
-            for(let button of botMovesButtons) button.setAttribute("hidden", true);
-            break;
-        case clearRoundResults:
-            //botMove ();
             for(let paragraph of paragraphs) paragraph.textContent = "";
             for(let button of playerButtons) button.removeAttribute("hidden");
             clearRoundResults.setAttribute("hidden", true);
             break;
-
      }
 
      console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
@@ -233,23 +255,24 @@ function editText(btnElem) {
     cancelButtonCenter.removeAttribute("hidden");
 
     const insertTextintoParagraph = (idOfElem) =>{
-        updateParagraph.textContent = `You have selected to remove ${idOfElem} stick from the pile`;
+        if (idOfElem === "one") {
+            updateParagraph.textContent = `You have selected to remove ${idOfElem} stick from the pile`;
+        } else {
+            updateParagraph.textContent = `You have selected to remove ${idOfElem} sticks from the pile`;
+        }
     }
 
     switch (btnElem){
         case buttonOne:
             insertTextintoParagraph(btnElem.id);    
-        //updateParagraph.textContent = `You have selected to remove ${btnElem.id} stick from the pile`;
             playerSelectsOne = true;
             break;
         case buttonTwo:
             insertTextintoParagraph(btnElem.id);    
-        //updateParagraph.textContent = `You have selected to remove ${btnElem.id} sticks from the pile`;
             playerSelectsTwo = true;
             break;
         case buttonThree:
             insertTextintoParagraph(btnElem.id);    
-        //updateParagraph.textContent = `You have selected to remove ${btnElem.id} sticks from the pile`;
             playerSelectsThree = true;
             break;
     }

@@ -67,7 +67,7 @@
 
 
 
-createRows(idsForRows);
+createRows(idsForRows, centerMain, rowContainers);
 
 const stickArr = [];
 const createSticks = (num) => {
