@@ -1,4 +1,5 @@
 // Modules for html elements later
+
 const hmtlTag = document.querySelector("html");
 hmtlTag.style.margin = "0%";
 
@@ -83,7 +84,8 @@ headerForCenter.style.height = "28%";
 headerForCenter.style.backgroundColor = "goldenrod";
 
 const updateParagraph = document.createElement("p");
-headerForCenter.appendChild(updateParagraph);
+const updateParagraphWithBotChoice = document.createElement("p");
+headerForCenter.append(updateParagraph, updateParagraphWithBotChoice);
 
 // const botMoves = (e) => {
 
@@ -99,6 +101,7 @@ const confirmButtonCenter = document.createElement("button");
 confirmButtonCenter.textContent = "confirm";
 confirmButtonCenter.classList.add("bot-moves-buttons");
 confirmButtonCenter.setAttribute("hidden", "true");
+confirmButtonCenter.addEventListener("click", statsModal);
 
 const cancelButtonCenter = document.createElement("button");
 cancelButtonCenter.textContent = "cancel";
@@ -140,46 +143,56 @@ buttonForBotStats.style.height = "15%";
 buttonForBotStats.textContent = "bot stats";
 buttonForBotStats.addEventListener("click", statsModal);
 
-const containerForButtons = document.createElement("section");
-bodyOfHtml.appendChild(containerForButtons);
-containerForButtons.setAttribute("id", "player-buttons");
+const sectionForButtons = document.createElement("section");
+bodyOfHtml.appendChild(sectionForButtons);
 // buttonsForUser.style.width = "100%";
-containerForButtons.style.height = "20%";
+sectionForButtons.style.height = "20%";
+
+const containerForButtons = document.createElement("div");
+containerForButtons.setAttribute("id", "player-buttons");
+sectionForButtons.appendChild(containerForButtons);
+containerForButtons.style.height = "15%";
+containerForButtons.style.width = "70%";
+containerForButtons.style.backgroundColor = "goldenrod";
 
 const buttonOne = document.createElement("button");
 buttonOne.setAttribute("id", "one");
-buttonOne.style.width = "15%";
-buttonOne.style.height = "15%";
+buttonOne.style.width = "33%";
+buttonOne.style.height = "100%";
 containerForButtons.appendChild(buttonOne);
 const updateHeaderOfMain = (e) => editText(e.target);
 buttonOne.addEventListener("click", updateHeaderOfMain);
 
 const buttonTwo = document.createElement("button");
-buttonTwo.style.width = "15%";
-buttonTwo.style.height = "15%";
+buttonTwo.style.width = "33%";
+buttonTwo.style.height = "100%";
 buttonTwo.setAttribute("id", "two");
 containerForButtons.appendChild(buttonTwo);
 buttonTwo.addEventListener("click", updateHeaderOfMain);
 
 const buttonThree = document.createElement("button");
-buttonThree.style.width = "15%";
-buttonThree.style.height = "15%";
+buttonThree.style.width = "33%";
+buttonThree.style.height = "100%";
 buttonThree.setAttribute("id", "three");
 containerForButtons.appendChild(buttonThree);
 buttonThree.addEventListener("click", updateHeaderOfMain);
+
+const clearRoundResults = document.createElement("button");
 
 const footerContainer = document.createElement("footer");
 bodyOfHtml.appendChild(footerContainer);
 footerContainer.style.height = "20%";
 
-const playerButtons = [buttonOne, buttonTwo, buttonThree];
-
 var playerSelectsOne; 
 var playerSelectsTwo;
 var playerSelectsThree;
 
+const playerButtons = [buttonOne, buttonTwo, buttonThree];
+const botMovesButtons = [confirmButtonCenter, cancelButtonCenter];
+const playerSelections = [playerSelectsOne, playerSelectsTwo, playerSelectsThree, clearRoundResults];
+
 function statsModal(e) {
-    console.log(e);
+    console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
     switch (e.target){
         case buttonForStats: 
             modalForStats.classList.toggle("stats");
@@ -187,7 +200,19 @@ function statsModal(e) {
         case buttonForBotStats: 
             modalForBotStats.classList.toggle("stats");
             break;
-    }
+         case confirmButtonCenter:
+            // if (playerSelectsOne) bot will choose 3
+            // if (playerSelectsTwo) bot will choose 2
+            // if (playerSelectsThree) bot will choose 1
+            updateParagraphWithBotChoice.textContent = "test text";
+            for(let button of playerButtons) button.removeAttribute("hidden");
+            playerSelectsOne = false;
+            playerSelectsTwo = false;
+            playerSelectsThree = false;
+            for(let button of botMovesButtons) button.setAttribute("hidden", true);
+     }
+
+     console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
 }
  
 
@@ -218,3 +243,4 @@ function editText(btnElem) {
     // botMove function will retrieve this global variable and decide how many sticks to move
     console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
 }
+
