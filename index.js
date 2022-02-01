@@ -56,21 +56,6 @@ buttonForStats.style.height = "15%";
 buttonForStats.textContent = "player stats";
 buttonForStats.addEventListener("click", statsModal);
 
-function statsModal(e) {
-    console.log(e);
-
-    
-    switch (e.target.id){
-        case "player-stats-button" : 
-            modalForStats.classList.toggle("stats");
-            buttonTwo.disabled = true;
-            break;
-        case "bot-stats-button" : modalForBotStats.classList.toggle("stats");
-            break;
-    }
-}
- 
-
 const centerMain = document.createElement("article");
 centerMain.setAttribute("id", "center");
 mainConatiner.appendChild(centerMain);
@@ -103,9 +88,24 @@ headerForCenter.appendChild(updateParagraph);
 // const botMoves = (e) => {
 
 // }
+const secForCenterButtons = document.createElement("section");
+headerForCenter.append(secForCenterButtons);
+secForCenterButtons.style.display = "flex";
+secForCenterButtons.style.justifyContent = "center";
+secForCenterButtons.style.height = "30%";
+secForCenterButtons.style.backgroundColor = "cornflowerblue";
+
 const confirmButtonCenter = document.createElement("button");
-headerForCenter.appendChild(confirmButtonCenter);
-confirmButtonCenter.addEventListener("click", botMoves)
+confirmButtonCenter.textContent = "confirm";
+confirmButtonCenter.classList.add("bot-moves-buttons");
+confirmButtonCenter.setAttribute("hidden", "true");
+
+const cancelButtonCenter = document.createElement("button");
+cancelButtonCenter.textContent = "cancel";
+cancelButtonCenter.classList.add("bot-moves-buttons");
+cancelButtonCenter.setAttribute("hidden", "true");
+secForCenterButtons.append(confirmButtonCenter, cancelButtonCenter);
+//confirmButtonCenter.addEventListener("click", botMoves)
 
 //botMoves is a function that needs input from the button selected from 
 //user. so if user selects one bot
@@ -151,31 +151,8 @@ buttonOne.setAttribute("id", "one");
 buttonOne.style.width = "15%";
 buttonOne.style.height = "15%";
 containerForButtons.appendChild(buttonOne);
-const updateHeaderOfMain = (e) => editText(e.target.id);
+const updateHeaderOfMain = (e) => editText(e.target);
 buttonOne.addEventListener("click", updateHeaderOfMain);
-
-var playerSelectsOne; 
-var playerSelectsTwo;
-var playerSelectsThree;
-
-function editText(str) {
-    console.log(str);
-    updateParagraph.textContent = `testing ${str}`
-    confirmButtonCenter.classList.toggle("reveal-confirm");
-    switch (str){
-        case "one" :
-            playerSelectsOne = true;
-            break;
-        case "two" :
-            playerSelectsTwo = true;
-            break;
-        case "three" :
-            playerSelectsThree = true;
-            break;
-    } // this function is supposed to store the choice when the header is updated
-    // botMove function will retrieve this global variable and decide how many sticks to move
-    console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
-}
 
 const buttonTwo = document.createElement("button");
 buttonTwo.style.width = "15%";
@@ -194,3 +171,50 @@ buttonThree.addEventListener("click", updateHeaderOfMain);
 const footerContainer = document.createElement("footer");
 bodyOfHtml.appendChild(footerContainer);
 footerContainer.style.height = "20%";
+
+const playerButtons = [buttonOne, buttonTwo, buttonThree];
+
+var playerSelectsOne; 
+var playerSelectsTwo;
+var playerSelectsThree;
+
+function statsModal(e) {
+    console.log(e);
+    switch (e.target){
+        case buttonForStats: 
+            modalForStats.classList.toggle("stats");
+            break;
+        case buttonForBotStats: 
+            modalForBotStats.classList.toggle("stats");
+            break;
+    }
+}
+ 
+
+function editText(btnElem) {
+    console.log(btnElem);
+    confirmButtonCenter.removeAttribute("hidden");
+    cancelButtonCenter.removeAttribute("hidden");
+    switch (btnElem){
+        case buttonOne:
+            updateParagraph.textContent = `You have selected to remove ${btnElem.id} stick from the pile`;
+            playerSelectsOne = true;
+            break;
+        case buttonTwo:
+            updateParagraph.textContent = `You have selected to remove ${btnElem.id} sticks from the pile`;
+            playerSelectsTwo = true;
+            break;
+        case buttonThree:
+            updateParagraph.textContent = `You have selected to remove ${btnElem.id} sticks from the pile`;
+            playerSelectsThree = true;
+            break;
+    }
+    
+    for (let button of playerButtons){
+        button.setAttribute("hidden", true);
+    }
+    
+    // this function is supposed to store the choice when the header is updated
+    // botMove function will retrieve this global variable and decide how many sticks to move
+    console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
+}

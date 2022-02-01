@@ -22,12 +22,9 @@ body, section {
     
 }
 
-.reveal-confirm {
-    position: relative;
-    top: 15%;
-    left: 30%;
-    height: 30%;
-    width: 40%;
+.bot-moves-buttons {
+
+    width: 20%;
 }
 h2 {
 
