@@ -81,7 +81,7 @@ main > .edge {
 }
 
 
-body > section, player-buttons {
+body > section, #player-buttons {
     display: flex;
     justify-content: center;
     align-items: center;

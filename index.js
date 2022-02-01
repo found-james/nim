@@ -1,4 +1,3 @@
-// Modules for html elements later
 
 const hmtlTag = document.querySelector("html");
 hmtlTag.style.margin = "0%";
@@ -7,21 +6,16 @@ const bodyOfHtml = document.querySelector("body");
 bodyOfHtml.style.height = "100vh";
 bodyOfHtml.style.width = "100%";
 
-
 const headerContainer = document.createElement("header");
 bodyOfHtml.appendChild(headerContainer);
-// headerContainer.style.display = "flex";
 headerContainer.style.postion = "sticky";
 headerContainer.style.height = "20%";
 
 const navContainer = document.createElement("nav");
 headerContainer.appendChild(navContainer);
-// navContainer.style.height = "100%";
-
 
 const mainConatiner = document.createElement("main");
 bodyOfHtml.appendChild(mainConatiner);
-// mainConatiner.style.width = "100";
 mainConatiner.style.height = "40%";
 mainConatiner.style.display = "flex";
 
@@ -31,7 +25,6 @@ leftSideMain.setAttribute("id", "left-side");
 leftSideMain.classList.add("edge");
 leftSideMain.style.display = "flex";
 leftSideMain.style.flexDirection = "column";
-
 
 const headerForLeftSide = document.createElement("header");
 leftSideMain.appendChild(headerForLeftSide);
@@ -61,35 +54,30 @@ const centerMain = document.createElement("article");
 centerMain.setAttribute("id", "center");
 mainConatiner.appendChild(centerMain);
 
-
-const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"]; 
-const rowContainers =[]; 
-
-const createRows = (arr, domElem, arrOfdomElems) => {
-
-    for (let str of arr){
+const createRows = (domElem) => {
+    const idsForRows = ["first-row", "second-row", "third-row", "forth-row", "fifth-row", "sixth-row", "seventh-row"];  
+    const rowContainers = [];
+    for (let str of idsForRows){
         const row = document.createElement("section");
         domElem.appendChild(row);
         row.classList.add("row");
         row.setAttribute("id", str);
-        arrOfdomElems.push(row);
+        rowContainers.push(row);
 
     }
+    return rowContainers;
 }
-
 
 const headerForCenter = document.createElement("header");
 centerMain.appendChild(headerForCenter);
 headerForCenter.style.height = "28%";
 headerForCenter.style.backgroundColor = "goldenrod";
+const rowContainers = createRows(centerMain);
 
 const updateParagraph = document.createElement("p");
 const updateParagraphWithBotChoice = document.createElement("p");
 headerForCenter.append(updateParagraph, updateParagraphWithBotChoice);
 
-// const botMoves = (e) => {
-
-// }
 const secForCenterButtons = document.createElement("section");
 headerForCenter.append(secForCenterButtons);
 secForCenterButtons.style.display = "flex";
@@ -110,9 +98,6 @@ cancelButtonCenter.setAttribute("hidden", "true");
 cancelButtonCenter.addEventListener("click", statsModal);
 secForCenterButtons.append(confirmButtonCenter, cancelButtonCenter);
 
-
-//botMoves is a function that needs input from the button selected from 
-//user. so if user selects one bot
 const rightSideMain = document.createElement("article");
 mainConatiner.appendChild(rightSideMain);
 rightSideMain.setAttribute("id", "right-side");
@@ -146,7 +131,6 @@ buttonForBotStats.addEventListener("click", statsModal);
 
 const sectionForButtons = document.createElement("section");
 bodyOfHtml.appendChild(sectionForButtons);
-// buttonsForUser.style.width = "100%";
 sectionForButtons.style.height = "20%";
 
 const containerForButtons = document.createElement("div");
@@ -196,93 +180,81 @@ const playerButtons = [buttonOne, buttonTwo, buttonThree];
 const botMovesButtons = [confirmButtonCenter, cancelButtonCenter];
 
 
-
-function statsModal(e) {
-    console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
-
-    function botMove(){
-        if (playerSelectsOne) console.log("bot will move 3 sticks from pile");
-        if (playerSelectsTwo) console.log("bot will move 2 sticks");
-        if (playerSelectsThree) console.log("bot will move 1 stick");
+function statsModal(e) {    
+    const removeStickLoop = (num) => {
+        for(let i = 0; i < num; i++){
+            const stickToBeRemoved = document.querySelector(".stick");
+            stickToBeRemoved.remove();
+        }
     }
 
-    function updateBotPara() { 
-        if(playerSelectsOne) updateParagraphWithBotChoice.textContent = "Bot will move 3 sticks";
-        if(playerSelectsTwo) updateParagraphWithBotChoice.textContent = "Bot will move 2 sticks";
-        if(playerSelectsThree) updateParagraphWithBotChoice.textContent = "Bot will move 1 stick";
-
+    function botMove(){
+         return playerSelectsOne ? removeStickLoop(3)
+                :playerSelectsTwo ? removeStickLoop(2)
+                :playerSelectsThree ? removeStickLoop(1)
+                :console.log("hi");  
         } 
-    switch (e.target){
+
+    function updateBotPara() { 
+        if (playerSelectsOne) updateParagraphWithBotChoice.textContent = "Bot will move 3 sticks";
+        if (playerSelectsTwo) updateParagraphWithBotChoice.textContent = "Bot will move 2 sticks";
+        if (playerSelectsThree) updateParagraphWithBotChoice.textContent = "Bot will move 1 stick";
+        } 
+
+    function removeSticks (){
+        return playerSelectsOne ? removeStickLoop(1)
+                :playerSelectsTwo ? removeStickLoop(2)
+                :playerSelectsThree ? removeStickLoop(3)
+                :console.log("hi");  
+           
+        }
+    
+     switch (e.target){
         case buttonForStats: 
             modalForStats.classList.toggle("stats");
             break;
         case buttonForBotStats: 
             modalForBotStats.classList.toggle("stats");
             break;
-         case confirmButtonCenter:
-            // if (playerSelectsOne) bot will choose 3
-            // if (playerSelectsTwo) bot will choose 2
-            // if (playerSelectsThree) bot will choose 1
+        case confirmButtonCenter:
             clearRoundResults.removeAttribute("hidden");
             updateBotPara();
-            for(let button of botMovesButtons) button.setAttribute("hidden", true);
+            for (let button of botMovesButtons) button.setAttribute("hidden", true);
+            removeSticks();
+            //addSticksToPlayerStats(); couldnt get this funciton to work
             break;
-            case cancelButtonCenter:
-                playerSelectsOne = false;
-                playerSelectsTwo = false;
-                playerSelectsThree = false;
-                for(let paragraph of paragraphs) paragraph.textContent = "";
-                for(let button of botMovesButtons) button.setAttribute("hidden", true);
-                for(let button of playerButtons) button.removeAttribute("hidden");        
-            case clearRoundResults:
+        case cancelButtonCenter:
+            playerSelectsOne = false;
+            playerSelectsTwo = false;
+            playerSelectsThree = false;
+            for (let paragraph of paragraphs) paragraph.textContent = "";
+            paragraphs[0].textContent = "Make no mistake this time";
+            for (let button of botMovesButtons) button.setAttribute("hidden", true);
+            for (let button of playerButtons) button.removeAttribute("hidden");  
+            break;      
+        case clearRoundResults:
             botMove();
             playerSelectsOne = false;
             playerSelectsTwo = false;
             playerSelectsThree = false;
-            for(let paragraph of paragraphs) paragraph.textContent = "";
-            for(let button of playerButtons) button.removeAttribute("hidden");
+            for (let paragraph of paragraphs) paragraph.textContent = "";
+            paragraphs[1].textContent = "New Round";
+            for (let button of playerButtons) button.removeAttribute("hidden");
             clearRoundResults.setAttribute("hidden", true);
             break;
      }
 
-     console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
+         //    function addSticksToPlayerStats() {
+    //          const row = document.createElement("div");
+    //          modalForStats.appendChild(row);
+    //          row.classList.add("row");
+
+    //          if (playerSelectsOne){
+    //          console.log("addSticks to player stats");
+    //          const sticksToAppend = createSticks(1).pop();        
+    //          row.appendChild(sticksToAppend);
+    //         }
+    //     }
+
+     
 }
- 
-
-function editText(btnElem) {
-    console.log(btnElem);
-    confirmButtonCenter.removeAttribute("hidden");
-    cancelButtonCenter.removeAttribute("hidden");
-
-    const insertTextintoParagraph = (idOfElem) =>{
-        if (idOfElem === "one") {
-            updateParagraph.textContent = `You have selected to remove ${idOfElem} stick from the pile`;
-        } else {
-            updateParagraph.textContent = `You have selected to remove ${idOfElem} sticks from the pile`;
-        }
-    }
-
-    switch (btnElem){
-        case buttonOne:
-            insertTextintoParagraph(btnElem.id);    
-            playerSelectsOne = true;
-            break;
-        case buttonTwo:
-            insertTextintoParagraph(btnElem.id);    
-            playerSelectsTwo = true;
-            break;
-        case buttonThree:
-            insertTextintoParagraph(btnElem.id);    
-            playerSelectsThree = true;
-            break;
-    }
-    
-    for (let button of playerButtons){
-        button.setAttribute("hidden", true);
-    }
-    
-    // this function is supposed to store the choice when the header is updated
-    // botMove function will retrieve this global variable and decide how many sticks to move
-    console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
-}
-
