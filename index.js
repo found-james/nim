@@ -159,7 +159,6 @@ const buttonOne = document.createElement("button");
 buttonOne.setAttribute("id", "one");
 buttonOne.style.width = "33%";
 buttonOne.style.height = "100%";
-containerForButtons.appendChild(buttonOne);
 const updateHeaderOfMain = (e) => editText(e.target);
 buttonOne.addEventListener("click", updateHeaderOfMain);
 
@@ -167,17 +166,20 @@ const buttonTwo = document.createElement("button");
 buttonTwo.style.width = "33%";
 buttonTwo.style.height = "100%";
 buttonTwo.setAttribute("id", "two");
-containerForButtons.appendChild(buttonTwo);
 buttonTwo.addEventListener("click", updateHeaderOfMain);
 
 const buttonThree = document.createElement("button");
 buttonThree.style.width = "33%";
 buttonThree.style.height = "100%";
 buttonThree.setAttribute("id", "three");
-containerForButtons.appendChild(buttonThree);
 buttonThree.addEventListener("click", updateHeaderOfMain);
 
 const clearRoundResults = document.createElement("button");
+clearRoundResults.setAttribute("hidden", true);
+clearRoundResults.style.width = "33%";
+clearRoundResults.style.height = "100%";
+containerForButtons.append(buttonOne, buttonTwo, buttonThree, clearRoundResults);
+clearRoundResults.addEventListener("click", statsModal);
 
 const footerContainer = document.createElement("footer");
 bodyOfHtml.appendChild(footerContainer);
@@ -187,9 +189,10 @@ var playerSelectsOne;
 var playerSelectsTwo;
 var playerSelectsThree;
 
+const paragraphs = [updateParagraph, updateParagraphWithBotChoice];
 const playerButtons = [buttonOne, buttonTwo, buttonThree];
 const botMovesButtons = [confirmButtonCenter, cancelButtonCenter];
-const playerSelections = [playerSelectsOne, playerSelectsTwo, playerSelectsThree, clearRoundResults];
+const playerSelections = [playerSelectsOne, playerSelectsTwo, playerSelectsThree];
 
 function statsModal(e) {
     console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
@@ -205,11 +208,19 @@ function statsModal(e) {
             // if (playerSelectsTwo) bot will choose 2
             // if (playerSelectsThree) bot will choose 1
             updateParagraphWithBotChoice.textContent = "test text";
-            for(let button of playerButtons) button.removeAttribute("hidden");
+            clearRoundResults.removeAttribute("hidden");
             playerSelectsOne = false;
             playerSelectsTwo = false;
             playerSelectsThree = false;
             for(let button of botMovesButtons) button.setAttribute("hidden", true);
+            break;
+        case clearRoundResults:
+            //botMove ();
+            for(let paragraph of paragraphs) paragraph.textContent = "";
+            for(let button of playerButtons) button.removeAttribute("hidden");
+            clearRoundResults.setAttribute("hidden", true);
+            break;
+
      }
 
      console.log(playerSelectsOne, playerSelectsTwo, playerSelectsThree);
@@ -220,17 +231,25 @@ function editText(btnElem) {
     console.log(btnElem);
     confirmButtonCenter.removeAttribute("hidden");
     cancelButtonCenter.removeAttribute("hidden");
+
+    const insertTextintoParagraph = (idOfElem) =>{
+        updateParagraph.textContent = `You have selected to remove ${idOfElem} stick from the pile`;
+    }
+
     switch (btnElem){
         case buttonOne:
-            updateParagraph.textContent = `You have selected to remove ${btnElem.id} stick from the pile`;
+            insertTextintoParagraph(btnElem.id);    
+        //updateParagraph.textContent = `You have selected to remove ${btnElem.id} stick from the pile`;
             playerSelectsOne = true;
             break;
         case buttonTwo:
-            updateParagraph.textContent = `You have selected to remove ${btnElem.id} sticks from the pile`;
+            insertTextintoParagraph(btnElem.id);    
+        //updateParagraph.textContent = `You have selected to remove ${btnElem.id} sticks from the pile`;
             playerSelectsTwo = true;
             break;
         case buttonThree:
-            updateParagraph.textContent = `You have selected to remove ${btnElem.id} sticks from the pile`;
+            insertTextintoParagraph(btnElem.id);    
+        //updateParagraph.textContent = `You have selected to remove ${btnElem.id} sticks from the pile`;
             playerSelectsThree = true;
             break;
     }
