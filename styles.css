@@ -24,9 +24,9 @@ body, section {
 
 .reveal-confirm {
     position: relative;
-    top: 70%;
+    top: 15%;
     left: 30%;
-    height: 20%;
+    height: 30%;
     width: 40%;
 }
 h2 {

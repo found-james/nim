@@ -61,7 +61,9 @@ function statsModal(e) {
 
     
     switch (e.target.id){
-        case "player-stats-button" : modalForStats.classList.toggle("stats");
+        case "player-stats-button" : 
+            modalForStats.classList.toggle("stats");
+            buttonTwo.disabled = true;
             break;
         case "bot-stats-button" : modalForBotStats.classList.toggle("stats");
             break;
@@ -98,9 +100,12 @@ headerForCenter.style.backgroundColor = "goldenrod";
 const updateParagraph = document.createElement("p");
 headerForCenter.appendChild(updateParagraph);
 
+// const botMoves = (e) => {
+
+// }
 const confirmButtonCenter = document.createElement("button");
 headerForCenter.appendChild(confirmButtonCenter);
-//confirmButtonCenter.addEventListener("click", botMoves)
+confirmButtonCenter.addEventListener("click", botMoves)
 
 //botMoves is a function that needs input from the button selected from 
 //user. so if user selects one bot
@@ -135,17 +140,17 @@ buttonForBotStats.style.height = "15%";
 buttonForBotStats.textContent = "bot stats";
 buttonForBotStats.addEventListener("click", statsModal);
 
-const buttonsForUser = document.createElement("section");
-bodyOfHtml.appendChild(buttonsForUser);
-buttonsForUser.setAttribute("id", "player-buttons");
+const containerForButtons = document.createElement("section");
+bodyOfHtml.appendChild(containerForButtons);
+containerForButtons.setAttribute("id", "player-buttons");
 // buttonsForUser.style.width = "100%";
-buttonsForUser.style.height = "20%";
+containerForButtons.style.height = "20%";
 
 const buttonOne = document.createElement("button");
 buttonOne.setAttribute("id", "one");
 buttonOne.style.width = "15%";
 buttonOne.style.height = "15%";
-buttonsForUser.appendChild(buttonOne);
+containerForButtons.appendChild(buttonOne);
 const updateHeaderOfMain = (e) => editText(e.target.id);
 buttonOne.addEventListener("click", updateHeaderOfMain);
 
@@ -157,7 +162,6 @@ function editText(str) {
     console.log(str);
     updateParagraph.textContent = `testing ${str}`
     confirmButtonCenter.classList.toggle("reveal-confirm");
-
     switch (str){
         case "one" :
             playerSelectsOne = true;
@@ -177,14 +181,14 @@ const buttonTwo = document.createElement("button");
 buttonTwo.style.width = "15%";
 buttonTwo.style.height = "15%";
 buttonTwo.setAttribute("id", "two");
-buttonsForUser.appendChild(buttonTwo);
+containerForButtons.appendChild(buttonTwo);
 buttonTwo.addEventListener("click", updateHeaderOfMain);
 
 const buttonThree = document.createElement("button");
 buttonThree.style.width = "15%";
 buttonThree.style.height = "15%";
 buttonThree.setAttribute("id", "three");
-buttonsForUser.appendChild(buttonThree);
+containerForButtons.appendChild(buttonThree);
 buttonThree.addEventListener("click", updateHeaderOfMain);
 
 const footerContainer = document.createElement("footer");
