@@ -14,12 +14,12 @@ body, section {
     font-family: 'Montserrat', sans-serif;
     font-family: 'Roboto Mono', monospace;
     font-family: 'Ubuntu', sans-serif;
+    border-radius: 10px;
 }
 
 #center > header > button {
     padding: 0;
     border: 0;
-    
 }
 
 .bot-moves-buttons {
@@ -27,7 +27,6 @@ body, section {
     width: 20%;
 }
 h2 {
-
     box-sizing: border-box;
 }
 
@@ -35,13 +34,15 @@ h2 {
     display: flex;
     height: 100%;
     border: solid 2px black;
+    border-radius: 10px;
+
 }
 
 main > .edge {
     width: 17%;
     height: 100%;
     border: solid 2px black;
-
+    border-radius: 10px;
 }
 
 #center {
@@ -49,7 +50,9 @@ main > .edge {
     flex-direction: column;
     width: 66%;
     height: 100%;
-    border: solid black 2px;
+    border-radius: 10px;
+
+    
 }
 
 
@@ -64,8 +67,7 @@ main > .edge {
     gap: 5%;
     height: 14%;
     width: 100%;
-    border: solid 2px black;
-    
+       
 }
 
 #forth__row {
@@ -78,6 +80,7 @@ main > .edge {
     width: 2%;
     background-color: crimson;
     border: solid 2px black;
+    border-radius: 10px;
 }
 
 
@@ -103,6 +106,8 @@ body > section, #player-buttons {
 
 footer {
     border: black solid 2px;
+    border-radius: 10px;
+
 }
 
 

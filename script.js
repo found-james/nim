@@ -2,26 +2,21 @@
 
 const createSticks = (num) => {
     const stickArr = [];
-
     for (let i = 0; i < num; i++){
-    const stick = document.createElement("span");
-    stick.classList.add("stick");
-    stickArr.push(stick);
+        const stick = document.createElement("span");
+        stick.classList.add("stick");
+        stickArr.push(stick);
     }
-
     return stickArr;
 }
 
 const stickArr = createSticks(17);
 
 const appendSticks = (arr2) => {
-    
-    
-    for(let elem of arr2){
-        
+    for (let elem of arr2){
         const populateSticks = (numOfSticks) => {
             if (stickArr.length === 0){
-                throw new Error ("arr is empty")
+                throw new Error ("arr is empty");
             } else {
                 for (let i = 0; i < numOfSticks; i++){
                     elem.appendChild(stickArr.pop());
@@ -61,14 +56,10 @@ function checkIfItIsLastMove (){
         paragraphs[0].textContent = "This is the last move whoevers turn is to grab sticks has lost";
 
     }
-    console.log("checking if function works", sticksLeft);
-    console.log(sticksLeft.length)
-
     if (sticksLeft.length === 1 || 2 || 3) endGame();
 
 }
 
- 
 
 function editText(btnElem) {
     checkIfItIsLastMove();
@@ -82,7 +73,6 @@ function editText(btnElem) {
             updateParagraph.textContent = `You have selected to remove ${idOfElem} sticks from the pile`;
         }
     }
-
     switch (btnElem){
         case buttonOne:
             for (let paragraph of paragraphs) paragraph.textContent = "";
@@ -100,10 +90,7 @@ function editText(btnElem) {
             playerSelectsThree = true;
             break;
     }
-    
     for (let button of playerButtons){
         button.setAttribute("hidden", true);
-    }
-    
-    
+    }    
 }

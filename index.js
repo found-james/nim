@@ -8,7 +8,6 @@ bodyOfHtml.style.width = "100%";
 
 const headerContainer = document.createElement("header");
 bodyOfHtml.appendChild(headerContainer);
-headerContainer.style.postion = "sticky";
 headerContainer.style.height = "20%";
 
 const navContainer = document.createElement("nav");
@@ -48,7 +47,6 @@ buttonForStats.setAttribute("id", "player-stats-button");
 buttonForStats.style.width = "100%";
 buttonForStats.style.height = "15%";
 buttonForStats.textContent = "player stats";
-buttonForStats.addEventListener("click", statsModal);
 
 const centerMain = document.createElement("article");
 centerMain.setAttribute("id", "center");
@@ -71,7 +69,8 @@ const createRows = (domElem) => {
 const headerForCenter = document.createElement("header");
 centerMain.appendChild(headerForCenter);
 headerForCenter.style.height = "28%";
-headerForCenter.style.backgroundColor = "goldenrod";
+headerForCenter.style.backgroundColor = "#e88d72";
+headerForCenter.style.borderRadius = "10px";
 const rowContainers = createRows(centerMain);
 
 const updateParagraph = document.createElement("p");
@@ -84,18 +83,15 @@ secForCenterButtons.style.display = "flex";
 secForCenterButtons.style.justifyContent = "center";
 secForCenterButtons.style.height = "30%";
 
-
 const confirmButtonCenter = document.createElement("button");
 confirmButtonCenter.textContent = "confirm";
 confirmButtonCenter.classList.add("bot-moves-buttons");
 confirmButtonCenter.setAttribute("hidden", "true");
-confirmButtonCenter.addEventListener("click", statsModal);
 
 const cancelButtonCenter = document.createElement("button");
 cancelButtonCenter.textContent = "cancel";
 cancelButtonCenter.classList.add("bot-moves-buttons");
 cancelButtonCenter.setAttribute("hidden", "true");
-cancelButtonCenter.addEventListener("click", statsModal);
 secForCenterButtons.append(confirmButtonCenter, cancelButtonCenter);
 
 const rightSideMain = document.createElement("article");
@@ -127,37 +123,33 @@ buttonForBotStats.setAttribute("id", "bot-stats-button");
 buttonForBotStats.style.width = "100%";
 buttonForBotStats.style.height = "15%";
 buttonForBotStats.textContent = "bot stats";
-buttonForBotStats.addEventListener("click", statsModal);
 
 const sectionForButtons = document.createElement("section");
 bodyOfHtml.appendChild(sectionForButtons);
 sectionForButtons.style.height = "20%";
+sectionForButtons.style.backgroundColor = "#e88d72";
 
 const containerForButtons = document.createElement("div");
 containerForButtons.setAttribute("id", "player-buttons");
 sectionForButtons.appendChild(containerForButtons);
 containerForButtons.style.height = "15%";
 containerForButtons.style.width = "70%";
-containerForButtons.style.backgroundColor = "goldenrod";
 
 const buttonOne = document.createElement("button");
 buttonOne.setAttribute("id", "one");
 buttonOne.style.width = "33%";
 buttonOne.style.height = "100%";
 const updateHeaderOfMain = (e) => editText(e.target);
-buttonOne.addEventListener("click", updateHeaderOfMain);
 
 const buttonTwo = document.createElement("button");
 buttonTwo.style.width = "33%";
 buttonTwo.style.height = "100%";
 buttonTwo.setAttribute("id", "two");
-buttonTwo.addEventListener("click", updateHeaderOfMain);
 
 const buttonThree = document.createElement("button");
 buttonThree.style.width = "33%";
 buttonThree.style.height = "100%";
 buttonThree.setAttribute("id", "three");
-buttonThree.addEventListener("click", updateHeaderOfMain);
 
 const clearRoundResults = document.createElement("button");
 clearRoundResults.setAttribute("hidden", true);
@@ -165,7 +157,6 @@ clearRoundResults.style.width = "33%";
 clearRoundResults.style.height = "100%";
 clearRoundResults.textContent = "...click to allow botMove";
 containerForButtons.append(buttonOne, buttonTwo, buttonThree, clearRoundResults);
-clearRoundResults.addEventListener("click", statsModal);
 
 const footerContainer = document.createElement("footer");
 bodyOfHtml.appendChild(footerContainer);
@@ -179,6 +170,14 @@ const paragraphs = [updateParagraph, updateParagraphWithBotChoice];
 const playerButtons = [buttonOne, buttonTwo, buttonThree];
 const botMovesButtons = [confirmButtonCenter, cancelButtonCenter];
 
+buttonForStats.addEventListener("click", statsModal);
+confirmButtonCenter.addEventListener("click", statsModal);
+cancelButtonCenter.addEventListener("click", statsModal);
+buttonForBotStats.addEventListener("click", statsModal);
+buttonOne.addEventListener("click", updateHeaderOfMain);
+buttonTwo.addEventListener("click", updateHeaderOfMain);
+buttonThree.addEventListener("click", updateHeaderOfMain);
+clearRoundResults.addEventListener("click", statsModal);
 
 function statsModal(e) {    
     const removeStickLoop = (num) => {
