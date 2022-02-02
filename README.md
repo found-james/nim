@@ -1,4 +1,3 @@
-#2_nim
 
 ## About
 nim is a game in which two players take turns picking sticks
@@ -10,6 +9,7 @@ last player to choose from the pile loses
 
 ## Technologies used
 - HTML, CSS & JS
+- Google fonts
 
 ## addtional elements that need to be added
 
