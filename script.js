@@ -56,7 +56,7 @@ function checkIfItIsLastMove (){
         paragraphs[0].textContent = "This is the last move whoevers turn is to grab sticks has lost";
 
     }
-    if (sticksLeft.length === 1 || 2 || 3) endGame();
+    if (sticksLeft.length === 1 || 2 || 3) return endGame();
 
 }
 

@@ -3,8 +3,8 @@ const hmtlTag = document.querySelector("html");
 hmtlTag.style.margin = "0%";
 
 const bodyOfHtml = document.querySelector("body");
-bodyOfHtml.style.height = "100vh";
-bodyOfHtml.style.width = "100%";
+// bodyOfHtml.style.height = "100vh";
+// bodyOfHtml.style.width = "100%";
 
 const headerContainer = document.createElement("header");
 bodyOfHtml.appendChild(headerContainer);
@@ -153,8 +153,9 @@ buttonThree.setAttribute("id", "three");
 
 const clearRoundResults = document.createElement("button");
 clearRoundResults.setAttribute("hidden", true);
+buttonThree.setAttribute("id", "botMove");
 clearRoundResults.style.width = "33%";
-clearRoundResults.style.height = "100%";
+// clearRoundResults.style.height = "100%";
 clearRoundResults.textContent = "...click to allow botMove";
 containerForButtons.append(buttonOne, buttonTwo, buttonThree, clearRoundResults);
 

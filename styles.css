@@ -7,9 +7,22 @@ margin: 0;
 } */
 @import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Montserrat&family=Roboto+Mono&family=Ubuntu:wght@300;400&display=swap');
 
-body, section {
-    margin: 0;
-    
+*
+{
+    font-size: 14px;
+}
+
+html 
+{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+body, section 
+{
+    margin: 0;    
     font-family: 'Fruktur', cursive;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Roboto Mono', monospace;
@@ -17,98 +30,121 @@ body, section {
     border-radius: 10px;
 }
 
-#center > header > button {
+body 
+{
+    height: 810px;
+    width: 375px;
+    min-width: 375px;
+    min-height: 810px;
+}
+
+.stick 
+{
+    height: 99%;
+    width: 4%;
+    background-color: crimson;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+    
+#center > header > button 
+{
     padding: 0;
     border: 0;
 }
 
-.bot-moves-buttons {
-
+.bot-moves-buttons 
+{
     width: 20%;
 }
-h2 {
+
+h2 
+{
     box-sizing: border-box;
 }
 
-#selected-pile {
+#selected-pile 
+{
     display: flex;
     height: 100%;
     border: solid 2px black;
     border-radius: 10px;
-
 }
 
-main > .edge {
+main > .edge 
+{
     width: 17%;
     height: 100%;
     border: solid 2px black;
     border-radius: 10px;
 }
 
-#center {
+#center 
+{
     display: flex;
     flex-direction: column;
     width: 66%;
     height: 100%;
-    border-radius: 10px;
-
-    
+    border-radius: 10px;    
 }
 
-
-.center-updates {
+.center-updates 
+{
     height: 28%;
     background-color: goldenrod;
 }
 
-.row {
+.row 
+{
     display: flex;
     justify-content: center;
     gap: 5%;
     height: 14%;
-    width: 100%;
-       
+    width: 100%;       
 }
 
-#forth__row {
+#forth__row 
+{
     height: 16%;
 }
 
-
-.stick {
-    height: 99%;
-    width: 2%;
-    background-color: crimson;
-    border: solid 2px black;
-    border-radius: 10px;
-}
-
-
-body > section, #player-buttons {
+body > section, 
+#player-buttons 
+{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: solid 2px black; */
-    
+    height: 200px;
+    /* border: solid 2px black; */    
 }
 
-.disappear-player-buttons {
+.disappear-player-buttons 
+{
     height: 0px;
     width: 0px;
 }
 
-.stats {
-    
+.stats 
+{    
     height: 85%;
     width: 100%;
     background-color: cornflowerblue;
 }
 
-footer {
+footer 
+{
     border: black solid 2px;
     border-radius: 10px;
-
 }
 
+@media screen and (min-width: 600px) 
+{
+    *{font-size: 18px;}
+    body{width: 600px;}
+}
 
-
+@media screen and (min-width: 600px) 
+{
+    *{font-size: 24px;}
+    body{width: 1200px;}
+}
