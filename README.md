@@ -1,5 +1,5 @@
 # [nim](https://found-james.github.io/nim/)
-## Technologies used
 
+Technologies used
 - HTML, CSS & JS
 - Google fonts
